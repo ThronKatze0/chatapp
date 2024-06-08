@@ -1,2 +1,18 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import { Card, Input } from "flowbite-svelte";
+  import { collectionStore } from "sveltefirets";
+
+  const messagesStore = collectionStore<string>("chats/public/messages");
+</script>
+
+<div class="flex justify-center items-center space-y-4 min-h-screen">
+  <Card size="lg" padding="xl">
+    <h1 class="text-2xl font-bold">wsefwsef</h1>
+    <div class="flex flex-col min-h-full">
+      {#each $messagesStore as message}
+        <div>{message}</div>
+      {/each}
+    </div>
+    <Input id="large-input" size="lg" placeholder="Message" />
+  </Card>
+</div>
